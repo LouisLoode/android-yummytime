@@ -1,4 +1,4 @@
-package me.yummyti.yummytime;
+package me.yummyti.yummytime.adapters;
 
 /**
  * Created by louisloode on 12/12/2016.
@@ -7,6 +7,10 @@ package me.yummyti.yummytime;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+
+import me.yummyti.yummytime.fragments.CartFragment;
+import me.yummyti.yummytime.fragments.DiscoverFragment;
+import me.yummyti.yummytime.fragments.WeekFragment;
 
 public class PagerAdapter extends FragmentStatePagerAdapter {
     int mNumOfTabs;

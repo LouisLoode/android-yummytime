@@ -1,4 +1,4 @@
-package me.yummyti.yummytime;
+package me.yummyti.yummytime.fragments;
 
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -6,10 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class CartFragment extends Fragment {
+import me.yummyti.yummytime.R;
+
+public class DiscoverFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_cart, container, false);
+        return inflater.inflate(R.layout.fragment_discover, container, false);
     }
 }
