@@ -1,4 +1,4 @@
-package com.example.louisloode.androidyummytime;
+package me.yummyti.yummytime;
 
 import org.junit.Test;
 

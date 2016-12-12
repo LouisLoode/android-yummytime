@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">AndroidYummytime</string>
+    <string name="app_name">Yummytime</string>
+    <string name="register">Register</string>
+    <string name="login">login</string>
 </resources>
