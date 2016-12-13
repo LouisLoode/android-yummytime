@@ -64,7 +64,7 @@ public class RegisterActivity extends AppCompatActivity {
         Log.d(TAG, "Register");
 
         if (!validate()) {
-            onLoginFailed();
+            onRegisterFailed();
             return;
         }
 
@@ -89,7 +89,7 @@ public class RegisterActivity extends AppCompatActivity {
                 new Runnable() {
                     public void run() {
                         // On complete call either onLoginSuccess or onLoginFailed
-                        onLoginSuccess();
+                        onRegisterSuccess();
                         // onLoginFailed();
                         progressDialog.dismiss();
                     }
@@ -115,12 +115,12 @@ public class RegisterActivity extends AppCompatActivity {
         moveTaskToBack(true);
     }
 
-    public void onLoginSuccess() {
+    public void onRegisterSuccess() {
         _registerButton.setEnabled(true);
         finish();
     }
 
-    public void onLoginFailed() {
+    public void onRegisterFailed() {
         Toast.makeText(getBaseContext(), "Register failed", Toast.LENGTH_LONG).show();
 
         _registerButton.setEnabled(true);
@@ -135,6 +135,13 @@ public class RegisterActivity extends AppCompatActivity {
         String password = _passwordText.getText().toString();
         String password_verif = _passwordVerifText.getText().toString();
 
+        if (username.isEmpty()) {
+            _usernameText.setError("enter an username");
+            valid = false;
+        } else {
+            _usernameText.setError(null);
+        }
+
         if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             _emailText.setError("enter a valid email address");
             valid = false;
@@ -147,6 +154,13 @@ public class RegisterActivity extends AppCompatActivity {
             valid = false;
         } else {
             _passwordText.setError(null);
+        }
+
+        if (password != password_verif) {
+            _passwordVerifText.setError("passwords can be differents");
+            valid = false;
+        } else {
+            _passwordVerifText.setError(null);
         }
 
         return valid;
