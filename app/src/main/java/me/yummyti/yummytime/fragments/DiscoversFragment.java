@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import me.yummyti.yummytime.R;
 
@@ -14,8 +13,7 @@ import me.yummyti.yummytime.R;
 public class DiscoversFragment extends android.support.v4.app.Fragment {
     public static final String ARGS_INSTANCE = "me.yummyti.yummytime.argsInstance";
 
-    Button mButton;
-    FragmentNavigation mFragmentNavigation;
+    BaseFragment.FragmentNavigation mFragmentNavigation;
     int mInt = 0;
 
     public static DiscoversFragment newInstance(int instance) {
@@ -43,12 +41,9 @@ public class DiscoversFragment extends android.support.v4.app.Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof FragmentNavigation) {
-            mFragmentNavigation = (FragmentNavigation) context;
+        if (context instanceof BaseFragment.FragmentNavigation) {
+            mFragmentNavigation = (BaseFragment.FragmentNavigation) context;
         }
     }
 
-    public interface FragmentNavigation {
-        public void pushFragment(android.support.v4.app.Fragment fragment);
-    }
 }
