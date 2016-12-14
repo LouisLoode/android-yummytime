@@ -1,64 +1,145 @@
 <?xml version = "1.0" encoding = "utf-8"?>
 <RelativeLayout xmlns:android = "http://schemas.android.com/apk/res/android"
-    xmlns:tools = "http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height = "match_parent" android:paddingLeft= "@dimen/activity_horizontal_margin"
+    xmlns:tools = "http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height = "match_parent"
+    android:paddingLeft= "@dimen/activity_horizontal_margin"
     android:paddingRight = "@dimen/activity_horizontal_margin"
     android:paddingTop = "@dimen/activity_vertical_margin"
-    android:paddingBottom = "@dimen/activity_vertical_margin" tools:context = ".MainActivity">
+    android:paddingBottom = "@dimen/activity_vertical_margin"
+    android:background="#F2F2F2"
+    tools:context = ".MainActivity">
 
-    <TextView android:text = "Login" android:layout_width="wrap_content"
-        android:layout_height = "wrap_content"
-        android:id = "@+id/textview"
-        android:textSize = "35dp"
-        android:layout_alignParentTop = "true"
-        android:layout_centerHorizontal = "true" />
+
+    <!-- future place de l'illu -->
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/future_image"
+
+        android:src="@drawable/login_illu"
+        android:layout_marginTop="36dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+
+    <!-- champs identifiant/mail -->
+
+
+    <ImageView
+        android:layout_width="45dp"
+        android:layout_height="36dp"
+        android:src="@drawable/usert"
+        android:id="@+id/icn_user"
+        android:background="@android:color/white"
+        android:layout_below="@+id/future_image"
+        android:layout_alignStart="@+id/future_image"
+        android:layout_marginTop="20dp"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp" />
 
     <EditText
-        android:layout_width = "wrap_content"
-        android:layout_height = "wrap_content"
+        android:layout_width = "260dp"
+        android:layout_height = "36dp"
         android:inputType= "textEmailAddress"
         android:id = "@+id/input_email"
-        android:hint = "Email"
+
+        android:hint = "Enter your e-mail adress"
+        android:background="@android:color/white"
         android:focusable = "true"
-        android:textColorHighlight = "#ff7eff15"
-        android:textColorHint = "#ffff25e6"
-        android:layout_marginTop = "46dp"
-        android:layout_below = "@+id/textview"
-        android:layout_alignParentLeft = "true"
-        android:layout_alignParentStart = "true"
-        android:layout_alignParentRight = "true"
-        android:layout_alignParentEnd = "true" />
+        android:textColorHighlight = "#EA525F"
+        android:textColorHint = "#111111"
+        android:textSize="16dp"
+
+        android:paddingLeft="10dp"
+        android:layout_alignTop="@+id/icn_user"
+        android:layout_toEndOf="@+id/icn_user"
+        android:layout_alignEnd="@+id/future_image"/>
+
+
+    <!-- champs password -->
+
+
+    <ImageView
+        android:layout_width="45dp"
+        android:layout_height="36dp"
+        android:src="@drawable/keyt"
+        android:id="@+id/icn_pass"
+
+        android:background="@android:color/white"
+        android:layout_below="@+id/icn_user"
+        android:layout_alignStart="@+id/icn_user"
+        android:layout_marginTop="10dp"
+        android:paddingTop="7dp"
+        android:paddingBottom="7dp" />
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="260dp"
+        android:layout_height="36dp"
         android:inputType="textPassword"
-        android:ems="10"
         android:id="@+id/input_password"
-        android:layout_below="@+id/input_email"
-        android:layout_alignParentLeft = "true"
-        android:layout_alignParentStart = "true"
-        android:layout_alignParentRight = "true"
-        android:layout_alignParentEnd = "true"
-        android:textColorHint="#ffff299f"
-        android:hint="Password" />
+        android:background="@android:color/white"
+
+
+        android:paddingLeft="10dp"
+        android:textColorHint="#111111"
+        android:textColorHighlight = "#EA525F"
+        android:textSize="16dp"
+        android:hint="Password..."
+        android:fontFamily="sans-serif"
+        android:focusable = "true"
+
+        android:layout_alignTop="@+id/icn_pass"
+        android:layout_toEndOf="@+id/icn_pass"
+        android:layout_alignEnd="@+id/future_image" />
+
+
+    <!-- btn login -->
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
         android:text="login"
         android:id="@+id/btn_login"
-        android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/textview"
-        android:layout_toStartOf="@+id/textview" />
+        android:background="#EA525F"
+        android:textColor="@android:color/white"
+        android:textSize="18dp"
+
+
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/icn_pass"
+        android:layout_alignStart="@+id/icn_pass"
+        android:layout_height="36dp" />
+
+
+    <!-- btn register -->
+
+
+    <TextView
+        android:id="@+id/wannajoin"
+        android:text="Don't have an account yet?"
+        android:textSize="12sp"
+        android:textColorHint="@android:color/darker_gray"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/btn_login"
+        android:layout_marginTop="36dp" />
+
 
     <Button
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/register"
+        android:text="Sign in"
         android:id="@+id/link_signup"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/textview"
-        android:layout_toEndOf="@+id/textview" />
+
+        android:textAllCaps="false"
+        android:background="@null"
+
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/wannajoin"
+        android:layout_marginTop="4dp"
+
+        android:layout_height="20dp" />
 
 </RelativeLayout>
