@@ -6,14 +6,14 @@ package me.yummyti.yummytime.network;
 
 public class UrlBuilder {
 
-    private static final String BASE_URL = "http://api.brewerydb.com/";
+    private static final String BASE_URL = "http://91.134.136.124:3001/";
 
 
-    public static String getBeersUrl() {
-        return BASE_URL+"v2/beers?abv=-12";
+    public static String getUsersUrl() {
+        return BASE_URL+"users.json";
     }
 
-    public static String getBeersUrl(String name) {
-        return BASE_URL+"v2/beers?name="+name;
+    public static String getUsersUrl(Integer id) {
+        return BASE_URL+"users/"+id+".json";
     }
 }

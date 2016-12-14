@@ -28,8 +28,8 @@ public class SplashActivity extends Activity {
                 // Start your app main activity
 
                 // TODO First screen
-                Intent i = new Intent(SplashActivity.this, MainActivity.class);
-                //Intent i = new Intent(SplashActivity.this, HomeActivity.class);
+                //Intent i = new Intent(SplashActivity.this, MainActivity.class);
+                Intent i = new Intent(SplashActivity.this, HomeActivity.class);
                 startActivity(i);
 
                 // close this activity

@@ -115,12 +115,15 @@ public class RegisterActivity extends AppCompatActivity {
                             try {
                                 // Parsing json object response
                                 // response will be a json object
-                                JSONObject user = response.getJSONObject("user");
-                                Integer id = user.getInt("id");
+                                Integer id = response.getInt("id");
                                 ((ApplicationController) getApplication()).setUserProfileToken(id);
                                 //Log.e(TAG, response.toString(id));
                                 Integer userId = ((ApplicationController) getApplication()).getUserProfileToken();
                                 Log.d(TAG, "onAuthStateChanged:registered:" + userId.toString());
+
+                                onRegisterSuccess();
+
+                                progressDialog.dismiss();
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -129,10 +132,6 @@ public class RegisterActivity extends AppCompatActivity {
                                         Toast.LENGTH_LONG).show();
                             }
 
-
-                            onRegisterSuccess();
-
-                            progressDialog.dismiss();
 
                         } catch (JSONException e) {
                             e.printStackTrace();
