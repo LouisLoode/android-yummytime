@@ -13,8 +13,14 @@ import android.widget.RelativeLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.yummyti.yummytime.R;
+import me.yummyti.yummytime.adapters.CookbookAdapter;
+import me.yummyti.yummytime.adapters.RecipeAdapter;
 import me.yummyti.yummytime.adapters.UserAdapter;
+import me.yummyti.yummytime.models.Cookbook;
+import me.yummyti.yummytime.models.Recipe;
 import me.yummyti.yummytime.models.User;
+import me.yummyti.yummytime.network.CookbookService;
+import me.yummyti.yummytime.network.RecipeService;
 import me.yummyti.yummytime.network.UserService;
 
 
@@ -33,7 +39,15 @@ public class DiscoversFragment extends android.support.v4.app.Fragment {
     @BindView(R.id.usersListView)
     protected ListView usersListView;
 
+    @BindView(R.id.cookbooksListView)
+    protected ListView cookbooksListView;
+
+    @BindView(R.id.recipesListView)
+    protected ListView recipiesListView;
+
     private UserAdapter userAdapter;
+    private CookbookAdapter cookbookAdapter;
+    private RecipeAdapter recipeAdapter;
 
     BaseFragment.FragmentNavigation mFragmentNavigation;
     ;
@@ -63,8 +77,12 @@ public class DiscoversFragment extends android.support.v4.app.Fragment {
         ButterKnife.bind(this, view);
 
         userAdapter = new UserAdapter(getContext());
+        cookbookAdapter = new CookbookAdapter(getContext());
+        recipeAdapter = new RecipeAdapter(getContext());
 
         usersListView.setAdapter(userAdapter);
+        cookbooksListView.setAdapter(cookbookAdapter);
+        recipiesListView.setAdapter(recipeAdapter);
 
         showWaitingView();
 
@@ -81,6 +99,35 @@ public class DiscoversFragment extends android.support.v4.app.Fragment {
                 hideWaitingView();
             }
         });
+
+        RecipeService.getRecipies(new RecipeService.RecipiesListener() {
+            @Override
+            public void onReceiveRecipes(Recipe[] recipes) {
+                recipeAdapter.refresh(recipes);
+                hideWaitingView();
+            }
+
+
+            @Override
+            public void onFailed() {
+                hideWaitingView();
+            }
+        });
+
+        CookbookService.getCookbooks(new CookbookService.CookbooksListener() {
+            @Override
+            public void onReceiveCookbooks(Cookbook[] cookbooks) {
+                cookbookAdapter.refresh(cookbooks);
+                hideWaitingView();
+            }
+
+
+            @Override
+            public void onFailed() {
+                hideWaitingView();
+            }
+        });
+
         return view;
     }
 
