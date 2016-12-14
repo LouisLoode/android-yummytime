@@ -100,10 +100,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         VolleyLog.v("Response:%n %s", response.toString());
 
-
                         Log.d(TAG, response.toString());
-
-
 
                         try {
                             // Parsing json object response
@@ -115,6 +112,10 @@ public class MainActivity extends AppCompatActivity {
                             Integer userId = ((ApplicationController) getApplication()).getUserProfileToken();
                             Log.d(TAG, "onAuthStateChanged:signed_in:" + userId.toString());
 
+                            onLoginSuccess();
+
+                            progressDialog.dismiss();
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                             Toast.makeText(getApplicationContext(),
@@ -123,9 +124,6 @@ public class MainActivity extends AppCompatActivity {
                         }
 
 
-                        onLoginSuccess();
-
-                        progressDialog.dismiss();
 
                     }
                 }, new Response.ErrorListener() {

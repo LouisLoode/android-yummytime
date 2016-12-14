@@ -110,9 +110,28 @@ public class RegisterActivity extends AppCompatActivity {
                         try {
                             VolleyLog.v("Response:%n %s", response.toString(4));
 
-                            onRegisterSuccess();
+                            Log.d(TAG, response.toString());
 
-                            progressDialog.dismiss();
+                            try {
+                                // Parsing json object response
+                                // response will be a json object
+                                Integer id = response.getInt("id");
+                                ((ApplicationController) getApplication()).setUserProfileToken(id);
+                                //Log.e(TAG, response.toString(id));
+                                Integer userId = ((ApplicationController) getApplication()).getUserProfileToken();
+                                Log.d(TAG, "onAuthStateChanged:registered:" + userId.toString());
+
+                                onRegisterSuccess();
+
+                                progressDialog.dismiss();
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                                Toast.makeText(getApplicationContext(),
+                                        "Error: " + e.getMessage(),
+                                        Toast.LENGTH_LONG).show();
+                            }
+
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -170,7 +189,7 @@ public class RegisterActivity extends AppCompatActivity {
         _registerButton.setEnabled(true);
 
 
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
         startActivityForResult(intent, REQUEST_SIGNIN);
 
 
