@@ -16,15 +16,6 @@ public class ApplicationController extends Application {
 
     private Integer userProfileToken;
 
-    public Integer getUserProfileToken() {
-        return userProfileToken;
-    }
-
-    public void setUserProfileToken(Integer userProfileToken) {
-        this.userProfileToken = userProfileToken;
-    }
-
-
     /**
      * Log or request TAG
      */
@@ -121,5 +112,13 @@ public class ApplicationController extends Application {
                     new LruBitmapCache());
         }
         return this.mImageLoader;
+    }
+
+    public Integer getUserProfileToken() {
+        return userProfileToken;
+    }
+
+    public void setUserProfileToken(Integer userProfileToken) {
+        this.userProfileToken = userProfileToken;
     }
 }

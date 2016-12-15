@@ -37,22 +37,6 @@ public class WeeksFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_week, container, false);
 
-        /*WeekService.getWeek("22", new WeekService.WeeksListener() {
-            @Override
-            public void onFindSpots(ArrayList<Spots> spots) {
-
-                createMap(spots);
-
-                Toast.makeText(MainActivity.this, "ok", Toast.LENGTH_SHORT).show();
-
-            }
-
-            @Override
-            public void onFail() {
-                Toast.makeText(MainActivity.this, "no", Toast.LENGTH_SHORT).show();
-            }
-        });*/
-
         return view;
     }
 
