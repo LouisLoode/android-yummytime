@@ -1,0 +1,33 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@android:color/white"
+android:clickable="true" >
+
+<android.support.percent.PercentRelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="me.yummyti.yummytime.fragments.RecipeDetailFragment">
+
+    <com.android.volley.toolbox.NetworkImageView
+        android:id="@+id/detail_recipe_imageview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/detail_recipe_name_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView android:id="@+id/detail_recipe_description_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/detail_recipe_name_textview" />
+
+</android.support.percent.PercentRelativeLayout>
+
+</ScrollView>
+
+
