@@ -123,13 +123,13 @@ public class HomeActivity extends AppCompatActivity implements BaseFragment.Frag
         throw new IllegalStateException("Need to send an index that we know");
     }
 
-    public void buttonClick(View v) {
+  /*  public void buttonClick(View v) {
         switch(v.getId()) {
             case R.id.btn_all_ingrediants:
                 Intent IngredientsAll = new Intent(getApplicationContext(), IngredientsAllActivity.class);
                 startActivity(IngredientsAll);
                 break;
         }
-    }
+    }*/
 
 }
