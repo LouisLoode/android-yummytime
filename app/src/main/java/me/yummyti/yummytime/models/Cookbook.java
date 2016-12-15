@@ -19,6 +19,7 @@ public class Cookbook implements Parcelable {
     private int count_time;
 
     private String name;
+    private String chef;
     private String description;
 
     private String image;
@@ -34,6 +35,7 @@ public class Cookbook implements Parcelable {
         persons_amount = in.readInt();
         count_time = in.readInt();
         name = in.readString();
+        chef = in.readString();
         description = in.readString();
         image = in.readString();
         cookbookLabels = in.readParcelable(CookbookLabels.class.getClassLoader());
@@ -61,6 +63,7 @@ public class Cookbook implements Parcelable {
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(name);
+        parcel.writeString(chef);
         parcel.writeString(description);
         parcel.writeString(image);
         parcel.writeParcelable(cookbookLabels, 0);
@@ -119,5 +122,13 @@ public class Cookbook implements Parcelable {
 
     public void setCookbookLabels(CookbookLabels cookbookLabels) {
         this.cookbookLabels = cookbookLabels;
+    }
+
+    public String getChef() {
+        return chef;
+    }
+
+    public void setType(String type) {
+        this.chef = chef;
     }
 }

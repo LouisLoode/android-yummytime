@@ -21,6 +21,11 @@ android:clickable="true" >
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <TextView
+        android:id="@+id/detail_cookbook_chef_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <TextView android:id="@+id/detail_cookbook_description_textview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
