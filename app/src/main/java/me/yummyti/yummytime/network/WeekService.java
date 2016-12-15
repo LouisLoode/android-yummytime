@@ -1,7 +1,5 @@
 package me.yummyti.yummytime.network;
 
-import android.util.Log;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.VolleyError;
@@ -15,66 +13,53 @@ import java.util.HashMap;
 import java.util.Map;
 
 import me.yummyti.yummytime.ApplicationController;
-import me.yummyti.yummytime.models.Cookbook;
+import me.yummyti.yummytime.models.Week;
 
 /**
  * Created by louisloode on 14/12/2016.
  */
 
-public class CookbookService {
+public class WeekService {
 
-    private static final String COOKBOOK_REQUEST_TAG = "cookbooks_request";
+    private static final String WEEK_REQUEST_TAG = "weeks_request";
 
-    public interface CookbooksListener {
-        void onReceiveCookbooks(Cookbook[] cookbooks);
+    public interface WeeksListener {
+        void onReceiveWeeks(Week weeks);
         void onFailed();
     }
 
-    public CookbookService(){
+    public WeekService(){
 
     }
 
-    public static void getCookbooks(final CookbooksListener listener) {
+    public static void getWeek(Integer id, WeeksListener listener) {
 
-        String url = UrlBuilder.getCookbooksUrl();
-
-        Log.d("YUMMTIME", "url : "+url);
+        String url = UrlBuilder.getWeekUrl(id);
 
         //Create the request
-        JacksonRequest<Cookbook[]> request = createCookbooksRequest(url, listener);
-
-        sendRequest(request);
-
-    }
-
-    public static void getCookbook(Integer id, CookbooksListener listener) {
-
-        String url = UrlBuilder.getCookbooksUrl(id);
-
-        //Create the request
-        JacksonRequest<Cookbook[]> request = createCookbooksRequest(url, listener);
+        JacksonRequest<Week> request = createGetWeekRequest(url, listener);
 
         // Before we send the request, first we cancel the previous request
-        cancelRequest(COOKBOOK_REQUEST_TAG);
+        cancelRequest(WEEK_REQUEST_TAG);
 
-        request.setTag(COOKBOOK_REQUEST_TAG);
+        request.setTag(WEEK_REQUEST_TAG);
         sendRequest(request);
     }
 
-    private static void cancelRequest(String cookbookRequestTag) {
+    private static void cancelRequest(String weekRequestTag) {
         ApplicationController.getInstance()
                 .getRequestQueue()
-                .cancelAll(cookbookRequestTag);
+                .cancelAll(weekRequestTag);
 
     }
 
-    private static JacksonRequest<Cookbook[]> createCookbooksRequest(String url,
-                                                                 final CookbooksListener listener) {
+    private static JacksonRequest<Week> createGetWeekRequest(String url,
+                                                                 final WeeksListener listener) {
 
-        JacksonRequest<Cookbook[]> request =
-                new JacksonRequest<Cookbook[]>(Request.Method.GET, url, new JacksonRequestListener<Cookbook[]>() {
+        JacksonRequest<Week> request =
+                new JacksonRequest<Week>(Request.Method.GET, url, new JacksonRequestListener<Week>() {
                     @Override
-                    public void onResponse(Cookbook[] response, int statusCode, VolleyError error) {
+                    public void onResponse(Week response, int statusCode, VolleyError error) {
 
                         //response !!!
 
@@ -84,7 +69,7 @@ public class CookbookService {
 
 
                             if(listener!=null) {
-                                listener.onReceiveCookbooks(response);
+                                listener.onReceiveWeeks(response);
                             }
                         }
 
@@ -102,7 +87,7 @@ public class CookbookService {
                         // ArrayType
 
                         //return SimpleType.construct(UserResult.class);
-                        return ArrayType.construct(SimpleType.constructUnsafe(Cookbook.class),null,null);
+                        return ArrayType.construct(SimpleType.constructUnsafe(Week.class),null,null);
                     }
                 }) {
                     @Override
@@ -110,16 +95,14 @@ public class CookbookService {
                         Map<String, String> headers = new HashMap<String, String>();
                         //headers.put("Accept", "application/json");
 
-                        Integer userId = ApplicationController.getInstance().getUserProfileToken();
+
+                        //Integer userId = ApplicationController.getInstance().getUserProfileToken();
                         //headers.put("usersession", userId.toString());
-                        Log.e("USERID", userId.toString());
+                        //Log.e("USERID", userId.toString());
 
-                        headers.put("usersession", "7");
-
-                        //Integer userId = ((ApplicationController) getApplication()).getUserProfileToken();
-                        //Integer userId = ApplicationController.getUserProfileToken();
                         //if (getMethod() == Method.POST || getMethod() == Method.PUT) {
                         //headers.put("Content-Type", "application/json");
+                            headers.put("usersession", "7");
                         //}
 
                         return headers;

@@ -2,7 +2,6 @@ package me.yummyti.yummytime.adapters;
 
 
 import android.content.Context;
-import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,7 +25,7 @@ public class RecipeAdapter extends BaseAdapter {
 
     protected class RecipeViewHolder {
 
-        @Nullable
+
         @BindView(R.id.recipe_image)
         protected NetworkImageView networkImageView;
 

@@ -10,20 +10,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.VolleyLog;
-import com.android.volley.toolbox.JsonObjectRequest;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.Map;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import me.yummyti.yummytime.models.User;
+import me.yummyti.yummytime.network.UserService;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -89,65 +79,33 @@ public class MainActivity extends AppCompatActivity {
         final String password = _passwordText.getText().toString();
 
 
-        // Post params to be sent to the server
-        HashMap<String, String> params = new HashMap<String, String>();
-        params.put("mail", email);
-        params.put("password", password);
-
-        JsonObjectRequest req = new JsonObjectRequest(LOGIN_URL, new JSONObject(params),
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        VolleyLog.v("Response:%n %s", response.toString());
-
-                        Log.d(TAG, response.toString());
-
-                        try {
-                            // Parsing json object response
-                            // response will be a json object
-                            JSONObject user = response.getJSONObject("user");
-                            Integer id = user.getInt("id");
-                            ((ApplicationController) getApplication()).setUserProfileToken(id);
-                            //Log.e(TAG, response.toString(id));
-                            Integer userId = ((ApplicationController) getApplication()).getUserProfileToken();
-                            Log.d(TAG, "onAuthStateChanged:signed_in:" + userId.toString());
-
-                            onLoginSuccess();
-
-                            progressDialog.dismiss();
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            Toast.makeText(getApplicationContext(),
-                                    "Error: " + e.getMessage(),
-                                    Toast.LENGTH_LONG).show();
-                        }
-
-
-
-                    }
-                }, new Response.ErrorListener() {
+        UserService.loginUser(email, password, new UserService.UserLoginResultListener() {
             @Override
-            public void onErrorResponse(VolleyError error) {
-                VolleyLog.e("Error: ", error.getMessage());
+            public void onLoginUsers(User user) {
+
+
+                    Integer id = user.getId();
+                    Log.e(TAG, String.valueOf(id));
+                    //((ApplicationController) getApplication()).setUserProfileToken(id);
+                    //Log.e(TAG, user.toString());
+                    //Integer userId = ((ApplicationController) getApplication()).getUserProfileToken();
+                    //Log.d(TAG, "onAuthStateChanged:signed_in:" + userId.toString());
+
+
+                onLoginSuccess();
 
                 progressDialog.dismiss();
 
-                onLoginFailed();
             }
-        }) {
 
             @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                HashMap<String, String> headers = new HashMap<String, String>();
-                headers.put("Content-Type", "application/json");
-                return headers;
+            public void onFailed() {
+                onLoginFailed();
+
+                progressDialog.dismiss();
             }
+        });
 
-        };
-
-        // add the request object to the queue to be executed
-        ApplicationController.getInstance().addToRequestQueue(req);
     }
 
 

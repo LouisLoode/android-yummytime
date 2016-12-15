@@ -21,6 +21,8 @@ public class Recipe implements Parcelable {
     private String image;
     private String type_menu;
 
+    private RecipeLabels recipeLabels;
+
 
     public Recipe() {
     }
@@ -81,6 +83,12 @@ public class Recipe implements Parcelable {
         this.type_menu = type_menu;
     }
 
+    public RecipeLabels getRecipeLabels() { return recipeLabels; }
+
+    public void setRecipeLabels(RecipeLabels recipeLabels) {
+        this.recipeLabels = recipeLabels;
+    }
+
     protected Recipe(Parcel in) {
         id = in.readInt();
         persons_amount = in.readInt();
@@ -89,6 +97,7 @@ public class Recipe implements Parcelable {
         description = in.readString();
         image = in.readString();
         type_menu = in.readString();
+        recipeLabels = in.readParcelable(RecipeLabels.class.getClassLoader());
 
     }
 
@@ -121,6 +130,7 @@ public class Recipe implements Parcelable {
         parcel.writeString(description);
         parcel.writeString(image);
         parcel.writeString(type_menu);
+        parcel.writeParcelable(recipeLabels, 0);
 
     }
 
