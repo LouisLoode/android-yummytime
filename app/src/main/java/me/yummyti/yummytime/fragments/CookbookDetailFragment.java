@@ -5,6 +5,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
@@ -12,10 +15,14 @@ import com.android.volley.toolbox.NetworkImageView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnItemClick;
 import me.yummyti.yummytime.ApplicationController;
 import me.yummyti.yummytime.R;
+import me.yummyti.yummytime.adapters.RecipeAdapter;
 import me.yummyti.yummytime.models.Cookbook;
 import me.yummyti.yummytime.models.CookbookLabels;
+import me.yummyti.yummytime.models.Recipe;
+import me.yummyti.yummytime.network.RecipeService;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -36,6 +43,14 @@ public class CookbookDetailFragment extends Fragment {
 
     @BindView(R.id.detail_cookbook_description_textview)
     protected TextView cookbookDescriptionTextview;
+
+    @BindView(R.id.recipesListView)
+    protected ListView recipiesListView;
+
+    @BindView(R.id.waitingView)
+    RelativeLayout waitingView;
+
+    private RecipeAdapter recipeAdapter;
 
     private Cookbook cookbook;
 
@@ -62,6 +77,31 @@ public class CookbookDetailFragment extends Fragment {
 
         ButterKnife.bind(this, rootView);
 
+
+        recipeAdapter = new RecipeAdapter(getContext());
+
+
+        recipiesListView.setAdapter(recipeAdapter);
+
+        showWaitingView();
+
+
+
+        RecipeService.getRecipies(new RecipeService.RecipiesListener() {
+
+            @Override
+            public void onReceiveRecipes(Recipe[] recipes) {
+                recipeAdapter.refresh(recipes);
+                hideWaitingView();
+            }
+
+
+            @Override
+            public void onFailed() {
+                hideWaitingView();
+            }
+        });
+
         return rootView;
     }
 
@@ -85,6 +125,33 @@ public class CookbookDetailFragment extends Fragment {
         cookbookDescriptionTextview.setText(cookbook.getDescription());
 
 
+    }
+
+    @OnItemClick(R.id.recipesListView)
+    public void onClickRecipe(AdapterView<?> adapterView, View view, int position, long id) {
+
+        Recipe recipe = (Recipe) recipeAdapter.getItem(position);
+
+        RecipeDetailFragment recipeDetailFragment = RecipeDetailFragment.newInstance(recipe);
+
+        // R.id.activity_home = id container de cette activité
+
+        getFragmentManager()
+                .beginTransaction()
+                .add(R.id.activity_home, recipeDetailFragment)
+                .addToBackStack(null)
+                .commit();
+
+
+    }
+
+
+    private void showWaitingView() {
+        waitingView.setVisibility(View.VISIBLE);
+    }
+
+    private void hideWaitingView() {
+        waitingView.setVisibility(View.INVISIBLE);
     }
     
 
