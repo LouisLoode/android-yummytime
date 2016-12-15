@@ -19,6 +19,8 @@ import me.yummyti.yummytime.fragments.WeeksFragment;
 
 
 public class HomeActivity extends AppCompatActivity implements BaseFragment.FragmentNavigation, FragNavController.TransactionListener, FragNavController.RootFragmentListener {
+    public static final String TAG = HomeActivity.class.getSimpleName();
+
     private BottomBar mBottomBar;
     private FragNavController mNavController;
 
@@ -34,8 +36,8 @@ public class HomeActivity extends AppCompatActivity implements BaseFragment.Frag
 
 
         mBottomBar = (BottomBar) findViewById(R.id.bottomBar);
-        //mBottomBar.selectTabAtPosition(INDEX_DISCOVERS);
-        mBottomBar.selectTabAtPosition(INDEX_CARTS);
+        mBottomBar.selectTabAtPosition(INDEX_DISCOVERS);
+        //mBottomBar.selectTabAtPosition(INDEX_CARTS);
 
         mNavController =
                 new FragNavController(savedInstanceState, getSupportFragmentManager(), R.id.container,this,5, INDEX_DISCOVERS);

@@ -6,6 +6,8 @@ import android.view.View;
 
 public class IngredientsAllActivity extends AppCompatActivity {
 
+    public static final String TAG = IngredientsAllActivity.class.getSimpleName();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

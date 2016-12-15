@@ -1,92 +1,209 @@
 <?xml version = "1.0" encoding = "utf-8"?>
 <RelativeLayout xmlns:android = "http://schemas.android.com/apk/res/android"
-xmlns:tools = "http://schemas.android.com/tools" android:layout_width="match_parent"
-android:layout_height = "match_parent" android:paddingLeft= "@dimen/activity_horizontal_margin"
-android:paddingRight = "@dimen/activity_horizontal_margin"
-android:paddingTop = "@dimen/activity_vertical_margin"
-android:paddingBottom = "@dimen/activity_vertical_margin" tools:context = ".RegisterActivity">
+xmlns:tools = "http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height = "match_parent"
+    android:paddingLeft= "@dimen/activity_horizontal_margin"
+    android:paddingRight = "@dimen/activity_horizontal_margin"
+    android:paddingTop = "@dimen/activity_vertical_margin"
+    android:paddingBottom = "@dimen/activity_vertical_margin"
+    android:background="#F2F2F2"
+    tools:context = ".RegisterActivity">
 
-<TextView android:text = "Register" android:layout_width="wrap_content"
-    android:layout_height = "wrap_content"
-    android:id = "@+id/textview"
-    android:textSize = "35dp"
-    android:layout_alignParentTop = "true"
-    android:layout_centerHorizontal = "true" />
+    <!-- future place de l'illu -->
 
-<EditText
-    android:layout_width = "wrap_content"
-    android:layout_height = "wrap_content"
-    android:inputType= "textNoSuggestions"
-    android:id = "@+id/input_username"
-    android:hint = "Username"
-    android:focusable = "true"
-    android:textColorHighlight = "#ff7eff15"
-    android:textColorHint = "#ffff25e6"
-    android:layout_marginTop = "46dp"
-    android:layout_below = "@+id/textview"
-    android:layout_alignParentLeft = "true"
-    android:layout_alignParentStart = "true"
-    android:layout_alignParentRight = "true"
-    android:layout_alignParentEnd = "true" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:id="@+id/future_image_bis"
 
-<EditText
-    android:layout_width = "wrap_content"
-    android:layout_height = "wrap_content"
-    android:inputType= "textEmailAddress"
-    android:id = "@+id/input_email"
-    android:hint = "Email"
-    android:focusable = "true"
-    android:textColorHighlight = "#ff7eff15"
-    android:textColorHint = "#ffff25e6"
-    android:layout_below = "@+id/input_username"
-    android:layout_alignParentLeft = "true"
-    android:layout_alignParentStart = "true"
-    android:layout_alignParentRight = "true"
-    android:layout_alignParentEnd = "true" />
+        android:src="@drawable/ill_register"
+        android:layout_marginTop="4dp"
+        android:layout_height="210dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
 
-<EditText
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:inputType="textPassword"
-    android:ems="10"
-    android:id="@+id/input_password"
-    android:layout_below="@+id/input_email"
-    android:layout_alignParentLeft = "true"
-    android:layout_alignParentStart = "true"
-    android:layout_alignParentRight = "true"
-    android:layout_alignParentEnd = "true"
-    android:textColorHint="#ffff299f"
-    android:hint="Password" />
+    <!-- champs username -->
 
-<EditText
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:inputType="textPassword"
-    android:ems="10"
-    android:id="@+id/input_password_verif"
-    android:layout_below="@+id/input_password"
-    android:layout_alignParentLeft = "true"
-    android:layout_alignParentStart = "true"
-    android:layout_alignParentRight = "true"
-    android:layout_alignParentEnd = "true"
-    android:textColorHint="#ffff299f"
-    android:hint="Password verification" />
+    <ImageView
+        android:layout_width="45dp"
+        android:layout_height="32dp"
+        android:src="@drawable/usert"
+        android:id="@+id/icn_user_bis"
+        android:background="@android:color/white"
+        android:layout_below="@+id/future_image_bis"
+        android:layout_alignStart="@+id/future_image_bis"
+        android:layout_marginTop="20dp"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp" />
 
-<Button
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@string/register"
-    android:id="@+id/btn_register"
-    android:layout_alignParentBottom="true"
-    android:layout_toLeftOf="@+id/textview" />
 
-<Button
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@string/login"
-    android:id="@+id/link_signin"
-    android:layout_alignParentBottom="true"
-    android:layout_toRightOf="@+id/textview" />
+    <EditText
+        android:layout_width = "260dp"
+        android:layout_height = "32dp"
+        android:inputType= "textNoSuggestions"
+        android:id = "@+id/input_username"
+
+        android:hint = "Choose a username"
+        android:background="@android:color/white"
+        android:focusable = "true"
+        android:textColorHighlight = "#EA525F"
+        android:textColorHint = "#111111"
+        android:textSize="14dp"
+
+        android:paddingLeft="10dp"
+        android:layout_alignTop="@+id/icn_user_bis"
+        android:layout_toEndOf="@+id/icn_user_bis"
+        android:layout_alignEnd="@+id/future_image_bis"
+
+        />
+
+
+    <!-- champs mail -->
+
+    <ImageView
+        android:layout_width="45dp"
+        android:layout_height="32dp"
+        android:src="@drawable/mailt"
+        android:id="@+id/icn_mail"
+
+        android:background="@android:color/white"
+        android:layout_below="@+id/icn_user_bis"
+        android:layout_alignStart="@+id/icn_user_bis"
+        android:layout_marginTop="10dp"
+        android:paddingTop="7dp"
+        android:paddingBottom="7dp" />
+
+    <EditText
+        android:layout_width = "260dp"
+        android:layout_height = "32dp"
+        android:inputType= "textEmailAddress"
+        android:id = "@+id/input_email"
+        android:background="@android:color/white"
+
+        android:textSize="14dp"
+        android:paddingLeft="10dp"
+        android:hint = "What's your email adress?"
+        android:focusable = "true"
+        android:textColorHighlight = "#EA525F"
+        android:textColorHint = "#111111"
+        android:layout_alignTop="@+id/icn_mail"
+        android:layout_toEndOf="@+id/icn_mail"
+        android:layout_alignEnd="@+id/future_image_bis" />
+
+
+    <!-- champs password -->
+
+    <ImageView
+        android:layout_width="45dp"
+        android:layout_height="32dp"
+        android:src="@drawable/keyt"
+        android:id="@+id/icn_pass_bis"
+
+        android:background="@android:color/white"
+        android:layout_below="@+id/icn_mail"
+        android:layout_alignStart="@+id/icn_mail"
+        android:layout_marginTop="10dp"
+        android:paddingTop="7dp"
+        android:paddingBottom="7dp" />
+
+    <EditText
+        android:layout_width="260dp"
+        android:layout_height="32dp"
+        android:inputType="textPassword"
+        android:id="@+id/input_password"
+        android:background="@android:color/white"
+
+        android:textColorHint="#111111"
+        android:textColorHighlight = "#EA525F"
+        android:paddingLeft="10dp"
+        android:textSize="14dp"
+        android:hint="Choose a password"
+        android:fontFamily="sans-serif"
+        android:focusable = "true"
+
+        android:layout_alignTop="@+id/icn_pass_bis"
+        android:layout_toEndOf="@+id/icn_pass_bis"
+        android:layout_alignEnd="@+id/future_image_bis" />
+
+
+    <!-- verification -->
+
+    <ImageView
+        android:layout_width="45dp"
+        android:layout_height="32dp"
+        android:src="@drawable/keyt"
+        android:id="@+id/icn_pass_bis_2"
+
+        android:background="@android:color/white"
+        android:paddingTop="7dp"
+        android:paddingBottom="7dp"
+        android:layout_marginTop="24dp"
+        android:layout_below="@+id/icn_pass_bis"
+        android:layout_alignStart="@+id/icn_pass_bis" />
+
+    <EditText
+        android:layout_width="400dp"
+        android:layout_height="32dp"
+        android:inputType="textPassword"
+        android:id="@+id/input_password_verif"
+        android:background="@android:color/white"
+
+        android:textColorHint="#111111"
+        android:textColorHighlight = "#EA525F"
+        android:paddingLeft="10dp"
+        android:textSize="14dp"
+        android:hint="Confirm password..."
+        android:fontFamily="sans-serif"
+        android:focusable = "true"
+
+        android:layout_alignTop="@+id/icn_pass_bis_2"
+        android:layout_toEndOf="@+id/icn_pass_bis_2"
+        android:layout_alignEnd="@+id/future_image_bis" />
+
+
+    <!-- Btn register -->
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="36dp"
+        android:text="@string/register"
+        android:background="#EA525F"
+        android:textColor="@android:color/white"
+        android:textSize="18dp"
+        android:id="@+id/btn_register"
+
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/icn_pass_bis_2"
+        android:layout_alignStart="@+id/icn_pass_bis_2"/>
+
+
+    <!-- Btn login -->
+
+    <TextView
+        android:id="@+id/alreadyjoined"
+        android:text="Already have an account?"
+        android:textSize="12sp"
+        android:textColorHint="@android:color/darker_gray"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/btn_register"
+        android:layout_marginTop="22dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:id="@+id/link_signin"
+        android:text="Login"
+
+        android:textAllCaps="false"
+        android:background="@null"
+
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/alreadyjoined"
+        android:layout_marginTop="2dp" />
+
 
 </RelativeLayout>

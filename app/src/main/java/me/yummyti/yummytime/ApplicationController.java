@@ -6,7 +6,10 @@ import android.text.TextUtils;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
+
+import me.yummyti.yummytime.network.LruBitmapCache;
 
 public class ApplicationController extends Application {
 
@@ -25,12 +28,17 @@ public class ApplicationController extends Application {
     /**
      * Log or request TAG
      */
-    public static final String TAG = "VolleyPatterns";
+    public final String TAG = ApplicationController.class.getSimpleName();
 
     /**
      * Global request queue for Volley
      */
     private RequestQueue mRequestQueue;
+
+    /**
+     * Global request queue for Image loader
+     */
+    private ImageLoader mImageLoader;
 
     /**
      * A singleton instance of the application class for easy access in other places
@@ -104,5 +112,14 @@ public class ApplicationController extends Application {
         if (mRequestQueue != null) {
             mRequestQueue.cancelAll(tag);
         }
+    }
+
+    public ImageLoader getImageLoader() {
+        getRequestQueue();
+        if (mImageLoader == null) {
+            mImageLoader = new ImageLoader(this.mRequestQueue,
+                    new LruBitmapCache());
+        }
+        return this.mImageLoader;
     }
 }

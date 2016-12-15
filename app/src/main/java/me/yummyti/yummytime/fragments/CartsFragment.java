@@ -13,7 +13,6 @@ import me.yummyti.yummytime.R;
 public class CartsFragment extends android.support.v4.app.Fragment {
     public static final String ARGS_INSTANCE = "me.yummyti.yummytime.argsInstance";
 
-
     BaseFragment.FragmentNavigation mFragmentNavigation;
     int mInt = 0;
 

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="120dp"
+    android:padding="16dp"
+    android:background="#FFFFFF">
+
+    <!-- Thumbnail Image -->
+    <com.android.volley.toolbox.NetworkImageView
+        android:id="@+id/cookbook_image"
+        android:layout_width="70dp"
+        android:layout_height="78dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="8dp"
+        android:layout_centerVertical="true"
+        android:background="@drawable/img_list_cookbook"/>
+
+    <!-- Name of cookbook -->
+    <TextView
+        android:id="@+id/cookbook_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/cookbook_image"
+        android:textStyle="bold"
+        android:textColor="#131D22"
+        android:textSize="20dp"
+        android:layout_marginTop="4dp"/>
+
+    <!-- Chef name -->
+    <TextView
+        android:id="@+id/cookbook_chef"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/cookbook_image"
+        android:layout_below="@+id/cookbook_name"
+        android:textColor="#131D2C"
+        android:textSize="16dp"
+        android:text="16 DISHS - CHEF NAME"
+        android:layout_marginBottom="8dp"/>
+
+
+</RelativeLayout>

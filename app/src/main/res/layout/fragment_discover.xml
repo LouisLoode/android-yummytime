@@ -1,15 +1,88 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_home"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    tools:context=".HomeActivity"
+    android:background="#F2F2F2">
 
-    <TextView
-        android:id="@+id/textView"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#EA525F"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/userp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Discover"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:id="@+id/toolbar_title" />
+    </android.support.v7.widget.Toolbar>
+
+
+
+    <RelativeLayout
+        android:id="@+id/waitingView"
+        android:layout_below="@+id/my_toolbar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Discover"
-        android:textAppearance="?android:attr/textAppearanceLarge"/>
+        android:visibility="invisible" >
 
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+
+    </RelativeLayout>
+
+
+      <!--<TextView
+          android:id="@+id/title_chiefs"
+          android:text="Chiefs"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent" />
+
+      <ListView
+          android:id="@+id/usersListView"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent" />-->
+
+      <TextView
+          android:id="@+id/title_cookbooks"
+          android:text="- TOP COOKBOOKS"
+          android:textSize="20dp"
+          android:textColor="#131D22"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="18dp"
+          android:layout_below="@+id/waitingView"/>
+
+      <ListView
+          android:id="@+id/cookbooksListView"
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:paddingTop="16dp"
+          android:layout_below="@+id/title_cookbooks" />
+
+
+      <!--<TextView
+          android:id="@+id/title_recipes"
+          android:text="Recipe"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent" />
+
+      <ListView
+          android:id="@+id/recipesListView"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent" />-->
 </RelativeLayout>
