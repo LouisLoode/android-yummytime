@@ -17,6 +17,8 @@ import java.util.Map;
 import me.yummyti.yummytime.ApplicationController;
 import me.yummyti.yummytime.models.Recipe;
 
+import static android.content.ContentValues.TAG;
+
 /**
  * Created by louisloode on 14/12/2016.
  */
@@ -111,14 +113,12 @@ public class RecipeService {
                         //headers.put("Accept", "application/json");
 
 
-                        //Integer userId = ApplicationController.getInstance().getUserProfileToken();
-                        //headers.put("usersession", userId.toString());
-                        //Log.e("USERID", userId.toString());
-
-                        headers.put("usersession", "7");
+                        Integer userId = ApplicationController.getInstance().getUserProfileToken();
+                        Log.e(TAG, "createGetUsersRequest:" + userId.toString());
                         //if (getMethod() == Method.POST || getMethod() == Method.PUT) {
                         //headers.put("Content-Type", "application/json");
-                        //}
+                        //headers.put("usersession", "7");
+                        headers.put("usersession", userId.toString());
 
                         return headers;
                     }
