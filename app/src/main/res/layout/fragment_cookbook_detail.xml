@@ -11,12 +11,27 @@ android:clickable="true" >
     tools:context="me.yummyti.yummytime.fragments.CookbookDetailFragment">
 
 
+
     <com.android.volley.toolbox.NetworkImageView
         android:id="@+id/detail_cookbook_imageview"
         android:layout_width="match_parent"
         android:layout_height="370dp"
         android:background="@drawable/playlist_test"
         android:layout_centerHorizontal="true"/>
+
+    <RelativeLayout
+        android:id="@+id/waitingView"
+        android:layout_below="@+id/detail_cookbook_imageview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible" >
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+
+    </RelativeLayout>
 
     <View
         android:layout_width="match_parent"
@@ -72,7 +87,22 @@ android:clickable="true" >
 
         />
 
+    <TextView
+        android:id="@+id/title_recipes"
+        android:text="BEST RECIPES"
+        android:textSize="20dp"
+        android:textColor="#131D22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="18dp"
+        android:layout_below="@+id/detail_cookbook_description_textview"/>
 
+    <ListView
+        android:id="@+id/recipesListView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+        android:layout_below="@+id/title_recipes" />
 
 
 </android.support.percent.PercentRelativeLayout>
