@@ -10,26 +10,70 @@ android:clickable="true" >
     android:layout_height="match_parent"
     tools:context="me.yummyti.yummytime.fragments.CookbookDetailFragment">
 
+
     <com.android.volley.toolbox.NetworkImageView
         android:id="@+id/detail_cookbook_imageview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="370dp"
+        android:background="@drawable/playlist_test"
         android:layout_centerHorizontal="true"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="370dp"
+        android:alpha="0.6"
+        android:background="#111111"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/detail_cookbook_imageview" />
 
     <TextView
         android:id="@+id/detail_cookbook_name_textview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="275dp"
+        android:textColor = "#FFFFFF"
+        android:textStyle="bold"
+        android:textSize="20dp"/>
 
     <TextView
         android:id="@+id/detail_cookbook_chef_textview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint = "Chef Name"
+        android:textColorHint="#FFFFFF"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/detail_cookbook_name_textview"
+        android:layout_marginTop="4dp"
+        android:textSize="14dp"/>
+
+    <Button
+        android:text="Plan the week"
+        android:id="@+id/plan_the_week"
+        android:background="#EA525F"
+        android:textColor="@android:color/white"
+        android:textSize="18dp"
+
+        android:layout_height="36dp"
+        android:layout_below="@+id/detail_cookbook_imageview"
+        android:layout_centerHorizontal="true"
+        android:layout_width="match_parent" />
+
 
     <TextView android:id="@+id/detail_cookbook_description_textview"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/detail_cookbook_name_textview" />
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_below="@+id/plan_the_week"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:textColor = "#111111"
+
+        />
+
+
+
 
 </android.support.percent.PercentRelativeLayout>
 
