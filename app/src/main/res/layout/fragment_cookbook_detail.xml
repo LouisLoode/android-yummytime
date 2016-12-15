@@ -2,8 +2,9 @@
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-android:background="#F2F2F2"
-android:clickable="true" >
+android:background="@android:color/white"
+android:clickable="true"
+android:paddingTop="70dp">
 
 <android.support.percent.PercentRelativeLayout
     android:layout_width="match_parent"
