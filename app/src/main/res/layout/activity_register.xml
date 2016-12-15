@@ -12,6 +12,16 @@ xmlns:tools = "http://schemas.android.com/tools"
 
     <!-- future place de l'illu -->
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:id="@+id/future_image_bis"
+
+        android:src="@drawable/ill_register"
+        android:layout_marginTop="4dp"
+        android:layout_height="210dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
 
     <!-- champs username -->
 
@@ -194,16 +204,6 @@ xmlns:tools = "http://schemas.android.com/tools"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/alreadyjoined"
         android:layout_marginTop="2dp" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:id="@+id/future_image_bis"
-
-        android:src="@drawable/register_illu"
-        android:layout_marginTop="4dp"
-        android:layout_height="210dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>
