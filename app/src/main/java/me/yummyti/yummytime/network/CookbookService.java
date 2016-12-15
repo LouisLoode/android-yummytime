@@ -111,10 +111,8 @@ public class CookbookService {
                         //headers.put("Accept", "application/json");
 
                         Integer userId = ApplicationController.getInstance().getUserProfileToken();
-                        //headers.put("usersession", userId.toString());
-                        Log.e("USERID", userId.toString());
-
-                        headers.put("usersession", "7");
+                        //Log.e(TAG, "createGetUsersRequest:" + userId.toString());
+                        headers.put("usersession", userId.toString());
 
                         //Integer userId = ((ApplicationController) getApplication()).getUserProfileToken();
                         //Integer userId = ApplicationController.getUserProfileToken();
