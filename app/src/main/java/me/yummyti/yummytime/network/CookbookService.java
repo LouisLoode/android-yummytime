@@ -110,9 +110,9 @@ public class CookbookService {
                         Map<String, String> headers = new HashMap<String, String>();
                         //headers.put("Accept", "application/json");
 
-                        Integer userId = ApplicationController.getInstance().getUserProfileToken();
+                        //Integer userId = ApplicationController.getInstance().getUserProfileToken();
                         //headers.put("usersession", userId.toString());
-                        Log.e("USERID", userId.toString());
+                        //Log.e("USERID", userId.toString());
 
                         headers.put("usersession", "7");
 

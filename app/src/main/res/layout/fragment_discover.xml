@@ -22,7 +22,7 @@
 
     </RelativeLayout>
 
-      <TextView
+      <!--<TextView
           android:id="@+id/title_chiefs"
           android:text="Chiefs"
           android:layout_width="match_parent"
@@ -31,7 +31,7 @@
       <ListView
           android:id="@+id/usersListView"
           android:layout_width="match_parent"
-          android:layout_height="match_parent" />
+          android:layout_height="match_parent" />-->
 
       <TextView
           android:id="@+id/title_cookbooks"
@@ -44,7 +44,7 @@
           android:layout_width="match_parent"
           android:layout_height="match_parent" />
 
-      <TextView
+      <!--<TextView
           android:id="@+id/title_recipes"
           android:text="Recipe"
           android:layout_width="match_parent"
@@ -53,6 +53,6 @@
       <ListView
           android:id="@+id/recipesListView"
           android:layout_width="match_parent"
-          android:layout_height="match_parent" />
+          android:layout_height="match_parent" />-->
 
 </RelativeLayout>
