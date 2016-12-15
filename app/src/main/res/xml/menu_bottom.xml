@@ -2,19 +2,19 @@
 <tabs xmlns:android="http://schemas.android.com/apk/res/android">
     <tab
         id="@+id/bb_menu_discovers"
-        title="Discover"
-        activeColor="#FFFFFF"
+        icon="@drawable/icdiscovertest"
+        activeColor="#EA525F"
         />
     <tab
         id="@+id/bb_menu_carts"
-        title="Cart"
-        activeColor="#FFFFFF"
+        icon="@drawable/iccarttest"
+        activeColor="#EA525F"
 
         />
     <tab
         id="@+id/bb_menu_weeks"
-        title="Week"
-        activeColor="#FFFFFF"
+        icon="@drawable/icweektest"
+        activeColor="#EA525F"
 
         />
 </tabs>
