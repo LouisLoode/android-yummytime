@@ -45,7 +45,8 @@
 
     </RelativeLayout>
 
-     <!-- <TextView
+
+      <!--<TextView
           android:id="@+id/title_chiefs"
           android:text="Chiefs"
           android:layout_width="match_parent"
@@ -73,7 +74,8 @@
           android:paddingTop="16dp"
           android:layout_below="@+id/title_cookbooks" />
 
-    <!--  <TextView
+
+      <!--<TextView
           android:id="@+id/title_recipes"
           android:text="Recipe"
           android:layout_width="match_parent"

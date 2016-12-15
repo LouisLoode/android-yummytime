@@ -84,10 +84,10 @@ public class MainActivity extends AppCompatActivity {
             public void onLoginUsers(User user) {
 
 
-                    Integer id = user.getId();
-                    //Log.e("DEBUG onLoginUsers", user.getName().toString());
-                    ((ApplicationController) getApplication()).setUserProfileToken(id);
-                    
+                Integer id = user.getId();
+                //Log.e("DEBUG onLoginUsers", user.getName().toString());
+                ((ApplicationController) getApplication()).setUserProfileToken(id);
+
 
                 onLoginSuccess();
 

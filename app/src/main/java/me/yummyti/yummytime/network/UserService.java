@@ -121,7 +121,7 @@ public class UserService {
     }
 
     private static JacksonRequest<User[]> createGetUsersRequest(String url,
-                                                                 final UsersListener listener) {
+                                                                final UsersListener listener) {
 
         JacksonRequest<User[]> request =
                 new JacksonRequest<User[]>(Request.Method.GET, url, new JacksonRequestListener<User[]>() {
@@ -171,7 +171,7 @@ public class UserService {
                         Log.e(TAG, "createGetUsersRequest:" + userId.toString());
                         //if (getMethod() == Method.POST || getMethod() == Method.PUT) {
                         //headers.put("Content-Type", "application/json");
-                            //headers.put("usersession", "7");
+                        //headers.put("usersession", "7");
                         headers.put("usersession", userId.toString());
                         //}
 
@@ -233,7 +233,7 @@ public class UserService {
     }
 
     private static JacksonRequest<User> createRegisterUsersRequest(String url, Map params,
-                                                                final UserRegisterResultListener listener) {
+                                                                   final UserRegisterResultListener listener) {
 
         JacksonRequest<User> request =
                 new JacksonRequest<User>(Request.Method.POST, url, params, new JacksonRequestListener<User>() {
@@ -248,18 +248,18 @@ public class UserService {
                         //if(error != null){
 
 
-                            if(response!=null) {
+                        if(response!=null) {
 
-                                if(listener!=null) {
-                                    listener.onRegisterUsers(response);
-                                }
+                            if(listener!=null) {
+                                listener.onRegisterUsers(response);
                             }
+                        }
 
-                            if(error!=null) {
-                                if(listener!=null) {
-                                    listener.onFailed();
-                                }
+                        if(error!=null) {
+                            if(listener!=null) {
+                                listener.onFailed();
                             }
+                        }
 
                         //}else {
 
