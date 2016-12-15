@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/future_image"
 
-        android:src="@drawable/login_illu"
+        android:src="@drawable/ill_login"
         android:layout_marginTop="36dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
