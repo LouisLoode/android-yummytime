@@ -7,12 +7,27 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import me.yummyti.yummytime.R;
+import me.yummyti.yummytime.adapters.RecipeAdapter;
+import me.yummyti.yummytime.models.Recipe;
+import me.yummyti.yummytime.network.RecipeService;
 
 
 public class WeeksFragment extends Fragment {
     public static final String ARGS_INSTANCE = "me.yummyti.yummytime.argsInstance";
+
+    @BindView(R.id.waitingView)
+    RelativeLayout waitingView;
+
+    @BindView(R.id.recipesListView)
+    protected ListView recipiesListView;
+
+    private RecipeAdapter recipeAdapter;
 
     BaseFragment.FragmentNavigation mFragmentNavigation;
     int mInt = 0;
@@ -37,22 +52,29 @@ public class WeeksFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_week, container, false);
 
-        /*WeekService.getWeek("22", new WeekService.WeeksListener() {
+        ButterKnife.bind(this, view);
+
+        recipeAdapter = new RecipeAdapter(getContext());
+
+        recipiesListView.setAdapter(recipeAdapter);
+
+        showWaitingView();
+
+
+        RecipeService.getRecipies(new RecipeService.RecipiesListener() {
+
             @Override
-            public void onFindSpots(ArrayList<Spots> spots) {
-
-                createMap(spots);
-
-                Toast.makeText(MainActivity.this, "ok", Toast.LENGTH_SHORT).show();
-
+            public void onReceiveRecipes(Recipe[] recipes) {
+                recipeAdapter.refresh(recipes);
+                hideWaitingView();
             }
 
-            @Override
-            public void onFail() {
-                Toast.makeText(MainActivity.this, "no", Toast.LENGTH_SHORT).show();
-            }
-        });*/
 
+            @Override
+            public void onFailed() {
+                hideWaitingView();
+            }
+        });
         return view;
     }
 
@@ -62,6 +84,16 @@ public class WeeksFragment extends Fragment {
         if (context instanceof BaseFragment.FragmentNavigation) {
             mFragmentNavigation = (BaseFragment.FragmentNavigation) context;
         }
+    }
+
+
+
+    private void showWaitingView() {
+        waitingView.setVisibility(View.VISIBLE);
+    }
+
+    private void hideWaitingView() {
+        waitingView.setVisibility(View.INVISIBLE);
     }
 
 }

@@ -6,7 +6,6 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.VolleyError;
 import com.fasterxml.jackson.databind.JavaType;
-import com.fasterxml.jackson.databind.type.ArrayType;
 import com.fasterxml.jackson.databind.type.SimpleType;
 import com.spothero.volley.JacksonRequest;
 import com.spothero.volley.JacksonRequestListener;
@@ -67,7 +66,7 @@ public class WeekService {
 
                         //response !!!
 
-                        //Log.d("User_service", response.toString());
+                        Log.d("Week_Service", String.valueOf(response.getId()));
 
                         if(response!=null) {
 
@@ -90,15 +89,14 @@ public class WeekService {
                         // SimpleTyp=e
                         // ArrayType
 
-                        //return SimpleType.construct(UserResult.class);
-                        return ArrayType.construct(SimpleType.constructUnsafe(Week.class),null,null);
+                        return SimpleType.construct(Week.class);
+                        //return ArrayType.construct(SimpleType.constructUnsafe(Week.class),null,null);
                     }
                 }) {
                     @Override
                     public Map<String, String> getHeaders() throws AuthFailureError {
                         Map<String, String> headers = new HashMap<String, String>();
                         //headers.put("Accept", "application/json");
-
 
                         Integer userId = ApplicationController.getInstance().getUserProfileToken();
                         Log.e(TAG, "createGetUsersRequest:" + userId.toString());
