@@ -16,14 +16,8 @@ import butterknife.ButterKnife;
 import butterknife.OnItemClick;
 import me.yummyti.yummytime.R;
 import me.yummyti.yummytime.adapters.CookbookAdapter;
-import me.yummyti.yummytime.adapters.RecipeAdapter;
-import me.yummyti.yummytime.adapters.UserAdapter;
 import me.yummyti.yummytime.models.Cookbook;
-import me.yummyti.yummytime.models.Recipe;
-import me.yummyti.yummytime.models.User;
 import me.yummyti.yummytime.network.CookbookService;
-import me.yummyti.yummytime.network.RecipeService;
-import me.yummyti.yummytime.network.UserService;
 
 
 public class DiscoversFragment extends android.support.v4.app.Fragment {
