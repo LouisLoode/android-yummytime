@@ -31,6 +31,9 @@ public class CookbookDetailFragment extends Fragment {
     @BindView(R.id.detail_cookbook_name_textview)
     protected TextView cookbookNameTextview;
 
+    @BindView(R.id.detail_cookbook_chef_textview)
+    protected TextView cookbookChefTextview;
+
     @BindView(R.id.detail_cookbook_description_textview)
     protected TextView cookbookDescriptionTextview;
 
@@ -78,6 +81,7 @@ public class CookbookDetailFragment extends Fragment {
         }
 
         cookbookNameTextview.setText(cookbook.getName());
+        cookbookChefTextview.setText(cookbook.getChef());
         cookbookDescriptionTextview.setText(cookbook.getDescription());
 
 

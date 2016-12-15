@@ -38,18 +38,18 @@ public class DiscoversFragment extends android.support.v4.app.Fragment {
     @BindView(R.id.waitingView)
     RelativeLayout waitingView;
 
-    @BindView(R.id.usersListView)
-    protected ListView usersListView;
+   // @BindView(R.id.usersListView)
+   // protected ListView usersListView;
 
     @BindView(R.id.cookbooksListView)
     protected ListView cookbooksListView;
 
-    @BindView(R.id.recipesListView)
-    protected ListView recipiesListView;
+    //@BindView(R.id.recipesListView)
+    //protected ListView recipiesListView;
 
-    private UserAdapter userAdapter;
+   // private UserAdapter userAdapter;
     private CookbookAdapter cookbookAdapter;
-    private RecipeAdapter recipeAdapter;
+   // private RecipeAdapter recipeAdapter;
 
     BaseFragment.FragmentNavigation mFragmentNavigation;
 
@@ -78,17 +78,17 @@ public class DiscoversFragment extends android.support.v4.app.Fragment {
 
         ButterKnife.bind(this, view);
 
-        userAdapter = new UserAdapter(getContext());
+       // userAdapter = new UserAdapter(getContext());
         cookbookAdapter = new CookbookAdapter(getContext());
-        recipeAdapter = new RecipeAdapter(getContext());
+      //  recipeAdapter = new RecipeAdapter(getContext());
 
-        usersListView.setAdapter(userAdapter);
+       // usersListView.setAdapter(userAdapter);
         cookbooksListView.setAdapter(cookbookAdapter);
-        recipiesListView.setAdapter(recipeAdapter);
+       // recipiesListView.setAdapter(recipeAdapter);
 
         showWaitingView();
 
-        UserService.getUsers(new UserService.UsersListener() {
+       /* UserService.getUsers(new UserService.UsersListener() {
             @Override
             public void onReceiveUsers(User[] users) {
                 userAdapter.refresh(users);
@@ -100,7 +100,7 @@ public class DiscoversFragment extends android.support.v4.app.Fragment {
             public void onFailed() {
                 hideWaitingView();
             }
-        });
+        });*/
 
 
         CookbookService.getCookbooks(new CookbookService.CookbooksListener() {
@@ -117,7 +117,7 @@ public class DiscoversFragment extends android.support.v4.app.Fragment {
             }
         });
 
-         RecipeService.getRecipies(new RecipeService.RecipiesListener() {
+        /* RecipeService.getRecipies(new RecipeService.RecipiesListener() {
             @Override
             public void onReceiveRecipes(Recipe[] recipes) {
                 recipeAdapter.refresh(recipes);
@@ -129,7 +129,7 @@ public class DiscoversFragment extends android.support.v4.app.Fragment {
             public void onFailed() {
                 hideWaitingView();
             }
-        });
+        });*/
 
         return view;
     }
@@ -153,7 +153,7 @@ public class DiscoversFragment extends android.support.v4.app.Fragment {
         }
     }
 
-    @OnItemClick(R.id.recipesListView)
+   /* @OnItemClick(R.id.recipesListView)
     public void onClickRecipe(AdapterView<?> adapterView, View view, int position, long id) {
 
         Recipe recipe = (Recipe) recipeAdapter.getItem(position);
@@ -168,7 +168,7 @@ public class DiscoversFragment extends android.support.v4.app.Fragment {
                 .addToBackStack(null)
                 .commit();
 
-    }
+    }*/
 
 
     @OnItemClick(R.id.cookbooksListView)
@@ -188,7 +188,7 @@ public class DiscoversFragment extends android.support.v4.app.Fragment {
 
     }
 
-    @OnItemClick(R.id.usersListView)
+   /* @OnItemClick(R.id.usersListView)
     public void onClickUser(AdapterView<?> adapterView, View view, int position, long id) {
 
         User user = (User) userAdapter.getItem(position);
@@ -203,7 +203,7 @@ public class DiscoversFragment extends android.support.v4.app.Fragment {
                 .addToBackStack(null)
                 .commit();
 
-    }
+    } */
 
     private void showWaitingView() {
         waitingView.setVisibility(View.VISIBLE);
