@@ -26,7 +26,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class RegisterActivity extends AppCompatActivity {
-    private static final String TAG = "RegisterActivity";
+    public static final String TAG = "RegisterActivity";
+
     private static final int REQUEST_SIGNIN = 0;
 
     private static final String REGISTER_URL = "http://91.134.136.124:3001/users.json";

@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  */
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Cookbook implements Parcelable {
+public class Ingregient implements Parcelable {
 
 
     private int id;
@@ -26,10 +26,10 @@ public class Cookbook implements Parcelable {
     private CookbookLabels cookbookLabels;
 
 
-    public Cookbook() {
+    public Ingregient() {
     }
 
-    protected Cookbook(Parcel in) {
+    protected Ingregient(Parcel in) {
         id = in.readInt();
         persons_amount = in.readInt();
         count_time = in.readInt();
@@ -39,15 +39,15 @@ public class Cookbook implements Parcelable {
         cookbookLabels = in.readParcelable(CookbookLabels.class.getClassLoader());
     }
 
-    public static final Creator<Cookbook> CREATOR = new Creator<Cookbook>() {
+    public static final Creator<Ingregient> CREATOR = new Creator<Ingregient>() {
         @Override
-        public Cookbook createFromParcel(Parcel in) {
-            return new Cookbook(in);
+        public Ingregient createFromParcel(Parcel in) {
+            return new Ingregient(in);
         }
 
         @Override
-        public Cookbook[] newArray(int size) {
-            return new Cookbook[size];
+        public Ingregient[] newArray(int size) {
+            return new Ingregient[size];
         }
     };
 

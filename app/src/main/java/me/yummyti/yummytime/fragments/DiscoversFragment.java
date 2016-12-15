@@ -7,11 +7,13 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnItemClick;
 import me.yummyti.yummytime.R;
 import me.yummyti.yummytime.adapters.CookbookAdapter;
 import me.yummyti.yummytime.adapters.RecipeAdapter;
@@ -50,7 +52,7 @@ public class DiscoversFragment extends android.support.v4.app.Fragment {
     private RecipeAdapter recipeAdapter;
 
     BaseFragment.FragmentNavigation mFragmentNavigation;
-    ;
+
     int mInt = 0;
 
     public static DiscoversFragment newInstance(int instance) {
@@ -100,10 +102,11 @@ public class DiscoversFragment extends android.support.v4.app.Fragment {
             }
         });
 
-        RecipeService.getRecipies(new RecipeService.RecipiesListener() {
+
+        CookbookService.getCookbooks(new CookbookService.CookbooksListener() {
             @Override
-            public void onReceiveRecipes(Recipe[] recipes) {
-                recipeAdapter.refresh(recipes);
+            public void onReceiveCookbooks(Cookbook[] cookbooks) {
+                cookbookAdapter.refresh(cookbooks);
                 hideWaitingView();
             }
 
@@ -114,10 +117,10 @@ public class DiscoversFragment extends android.support.v4.app.Fragment {
             }
         });
 
-        CookbookService.getCookbooks(new CookbookService.CookbooksListener() {
+         RecipeService.getRecipies(new RecipeService.RecipiesListener() {
             @Override
-            public void onReceiveCookbooks(Cookbook[] cookbooks) {
-                cookbookAdapter.refresh(cookbooks);
+            public void onReceiveRecipes(Recipe[] recipes) {
+                recipeAdapter.refresh(recipes);
                 hideWaitingView();
             }
 
@@ -148,6 +151,58 @@ public class DiscoversFragment extends android.support.v4.app.Fragment {
         if (context instanceof BaseFragment.FragmentNavigation) {
             mFragmentNavigation = (BaseFragment.FragmentNavigation) context;
         }
+    }
+
+    @OnItemClick(R.id.recipesListView)
+    public void onClickRecipe(AdapterView<?> adapterView, View view, int position, long id) {
+
+        Recipe recipe = (Recipe) recipeAdapter.getItem(position);
+
+        RecipeDetailFragment recipeDetailFragment = RecipeDetailFragment.newInstance(recipe);
+
+        // R.id.activity_home = id container de cette activité
+
+        getFragmentManager()
+                .beginTransaction()
+                .add(R.id.activity_home, recipeDetailFragment)
+                .addToBackStack(null)
+                .commit();
+
+    }
+
+
+    @OnItemClick(R.id.cookbooksListView)
+    public void onClickCookbook(AdapterView<?> adapterView, View view, int position, long id) {
+
+        Cookbook cookbook = (Cookbook) cookbookAdapter.getItem(position);
+
+        CookbookDetailFragment cookbookDetailFragment = CookbookDetailFragment.newInstance(cookbook);
+
+        // R.id.activity_home = id container de cette activité
+
+        getFragmentManager()
+                .beginTransaction()
+                .add(R.id.activity_home, cookbookDetailFragment)
+                .addToBackStack(null)
+                .commit();
+
+    }
+
+    @OnItemClick(R.id.usersListView)
+    public void onClickUser(AdapterView<?> adapterView, View view, int position, long id) {
+
+        User user = (User) userAdapter.getItem(position);
+
+        UserDetailFragment userDetailFragment = UserDetailFragment.newInstance(user);
+
+        // R.id.activity_home = id container de cette activité
+
+        getFragmentManager()
+                .beginTransaction()
+                .add(R.id.activity_home, userDetailFragment)
+                .addToBackStack(null)
+                .commit();
+
     }
 
     private void showWaitingView() {

@@ -110,11 +110,14 @@ public class RecipeService {
                         Map<String, String> headers = new HashMap<String, String>();
                         //headers.put("Accept", "application/json");
 
-                        //Integer userId = ((ApplicationController) getApplication()).getUserProfileToken();
-                        //Integer userId = ApplicationController.getUserProfileToken();
+
+                        //Integer userId = ApplicationController.getInstance().getUserProfileToken();
+                        //headers.put("usersession", userId.toString());
+                        //Log.e("USERID", userId.toString());
+
+                        headers.put("usersession", "7");
                         //if (getMethod() == Method.POST || getMethod() == Method.PUT) {
                         //headers.put("Content-Type", "application/json");
-                            headers.put("usersession", "7");
                         //}
 
                         return headers;

@@ -30,8 +30,8 @@ public class UserAdapter extends BaseAdapter {
         @BindView(R.id.user_name)
         protected TextView textViewNameUser;
 
-        public UserViewHolder(View beerRowView) {
-            ButterKnife.bind(this, beerRowView);
+        public UserViewHolder(View userRowView) {
+            ButterKnife.bind(this, userRowView);
         }
 
         public void setUser(User user) {
@@ -56,9 +56,9 @@ public class UserAdapter extends BaseAdapter {
         }
     }
 
-    public void refresh(List<User> beerList) {
+    public void refresh(List<User> userList) {
         this.users.clear();
-        this.users.addAll(beerList);
+        this.users.addAll(userList);
 
         //Refresh UI
         notifyDataSetChanged();
