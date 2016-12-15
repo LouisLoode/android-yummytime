@@ -85,18 +85,16 @@ public class MainActivity extends AppCompatActivity {
 
 
                     Integer id = user.getId();
-                    Log.e(TAG, String.valueOf(id));
-                    //((ApplicationController) getApplication()).setUserProfileToken(id);
-                    //Log.e(TAG, user.toString());
-                    //Integer userId = ((ApplicationController) getApplication()).getUserProfileToken();
-                    //Log.d(TAG, "onAuthStateChanged:signed_in:" + userId.toString());
-
+                    //Log.e("DEBUG onLoginUsers", user.getName().toString());
+                    ((ApplicationController) getApplication()).setUserProfileToken(id);
+                    
 
                 onLoginSuccess();
 
                 progressDialog.dismiss();
 
             }
+
 
             @Override
             public void onFailed() {

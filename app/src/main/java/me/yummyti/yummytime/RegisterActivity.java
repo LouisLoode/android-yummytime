@@ -10,20 +10,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.VolleyLog;
-import com.android.volley.toolbox.JsonObjectRequest;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.Map;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import me.yummyti.yummytime.models.User;
+import me.yummyti.yummytime.network.UserService;
 
 public class RegisterActivity extends AppCompatActivity {
     public static final String TAG = "RegisterActivity";
@@ -97,73 +87,35 @@ public class RegisterActivity extends AppCompatActivity {
         final String password = _passwordText.getText().toString();
         final String password_verif = _passwordVerifText.getText().toString();
 
-        // Post params to be sent to the server
-        HashMap<String, String> params = new HashMap<String, String>();
-        params.put("name", username);
-        params.put("mail", email);
-        params.put("password", password);
-        params.put("password_confirmation", password_verif);
 
-        JsonObjectRequest req = new JsonObjectRequest(REGISTER_URL, new JSONObject(params),
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            VolleyLog.v("Response:%n %s", response.toString(4));
-
-                            Log.d(TAG, response.toString());
-
-                            try {
-                                // Parsing json object response
-                                // response will be a json object
-                                Integer id = response.getInt("id");
-                                ((ApplicationController) getApplication()).setUserProfileToken(id);
-                                //Log.e(TAG, response.toString(id));
-                                Integer userId = ((ApplicationController) getApplication()).getUserProfileToken();
-                                Log.d(TAG, "onAuthStateChanged:registered:" + userId.toString());
-
-                                onRegisterSuccess();
-
-                                progressDialog.dismiss();
-
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                                Toast.makeText(getApplicationContext(),
-                                        "Error: " + e.getMessage(),
-                                        Toast.LENGTH_LONG).show();
-                            }
-
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-
-                            progressDialog.dismiss();
-
-                            onRegisterFailed();
-                        }
-                    }
-                }, new Response.ErrorListener() {
+        UserService.registerUser(username, email, password, password_verif, new UserService.UserRegisterResultListener() {
             @Override
-            public void onErrorResponse(VolleyError error) {
-                VolleyLog.e("Error: ", error.getMessage());
+            public void onRegisterUsers(User user) {
+
+                Log.e("DEBUG onRegisterUsers", user.getName().toString());
+                Integer id = user.getId();
+                //Log.e("DEBUG onLoginUsers", user.getName().toString());
+                ((ApplicationController) getApplication()).setUserProfileToken(id);
+
+                Integer userId = ApplicationController.getInstance().getUserProfileToken();
+                Log.e(TAG, "UserService.registerUser:" + userId.toString());
+
+                onRegisterSuccess();
 
                 progressDialog.dismiss();
 
-                onRegisterFailed();
             }
-        }) {
+
 
             @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                HashMap<String, String> headers = new HashMap<String, String>();
-                headers.put("Content-Type", "application/json");
-                return headers;
+            public void onFailed() {
+                Log.e("DEBUG onRegisterUsers", "FAILED");
+                onRegisterFailed();
+
+                progressDialog.dismiss();
             }
+        });
 
-        };
-
-        // add the request object to the queue to be executed
-        ApplicationController.getInstance().addToRequestQueue(req);
     }
 
 
