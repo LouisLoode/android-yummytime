@@ -86,8 +86,6 @@ public class WeeksFragment extends Fragment {
         }
     }
 
-
-
     private void showWaitingView() {
         waitingView.setVisibility(View.VISIBLE);
     }

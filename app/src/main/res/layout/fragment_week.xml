@@ -41,15 +41,23 @@
 
     </RelativeLayout>
 
+
     <TextView
         android:id="@+id/title_recipes"
-        android:text="Recipe"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:text="- TOP RECIPIES"
+        android:textSize="20dp"
+        android:textColor="#131D22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="18dp"
+        android:layout_below="@+id/waitingView"/>
 
     <ListView
         android:id="@+id/recipesListView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+        android:layout_below="@+id/title_recipes" />
+
 
 </RelativeLayout>

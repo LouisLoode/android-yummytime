@@ -20,7 +20,6 @@ import me.yummyti.yummytime.ApplicationController;
 import me.yummyti.yummytime.R;
 import me.yummyti.yummytime.adapters.RecipeAdapter;
 import me.yummyti.yummytime.models.Cookbook;
-import me.yummyti.yummytime.models.CookbookLabels;
 import me.yummyti.yummytime.models.Recipe;
 import me.yummyti.yummytime.network.RecipeService;
 
@@ -32,7 +31,7 @@ import me.yummyti.yummytime.network.RecipeService;
  */
 public class CookbookDetailFragment extends Fragment {
 
-    @BindView(R.id.detail_cookbook_imageview)
+    //@BindView(R.id.detail_cookbook_imageview)
     protected NetworkImageView networkImageView;
 
     @BindView(R.id.detail_cookbook_name_textview)
@@ -112,13 +111,13 @@ public class CookbookDetailFragment extends Fragment {
         ImageLoader imageLoader = ApplicationController.getInstance()
                 .getImageLoader();
 
-        CookbookLabels cookbookLabels = cookbook.getCookbookLabels();
+        /*CookbookLabels cookbookLabels = cookbook.getCookbookLabels();
 
         if(cookbookLabels!=null) {
             String urlImageLarge = cookbookLabels.getLarge();
 
             networkImageView.setImageUrl(urlImageLarge, imageLoader);
-        }
+        }*/
 
         cookbookNameTextview.setText(cookbook.getName());
         cookbookChefTextview.setText(cookbook.getChef());

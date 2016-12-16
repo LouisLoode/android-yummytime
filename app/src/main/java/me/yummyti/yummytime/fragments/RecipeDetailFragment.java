@@ -7,12 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.NetworkImageView;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import me.yummyti.yummytime.ApplicationController;
 import me.yummyti.yummytime.R;
 import me.yummyti.yummytime.models.Recipe;
 import me.yummyti.yummytime.models.RecipeLabels;
@@ -25,8 +21,8 @@ import me.yummyti.yummytime.models.RecipeLabels;
  */
 public class RecipeDetailFragment extends Fragment {
 
-    @BindView(R.id.detail_recipe_imageview)
-    protected NetworkImageView networkImageView;
+    /*@BindView(R.id.detail_recipe_imageview)
+    protected NetworkImageView networkImageView;*/
 
     @BindView(R.id.detail_recipe_name_textview)
     protected TextView recipeNameTextview;
@@ -66,15 +62,15 @@ public class RecipeDetailFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        ImageLoader imageLoader = ApplicationController.getInstance()
-                .getImageLoader();
+        //ImageLoader imageLoader = ApplicationController.getInstance()
+         //       .getImageLoader();
 
         RecipeLabels recipeLabels = recipe.getRecipeLabels();
 
         if(recipeLabels!=null) {
             String urlImageLarge = recipeLabels.getLarge();
 
-            networkImageView.setImageUrl(urlImageLarge, imageLoader);
+            //networkImageView.setImageUrl(urlImageLarge, imageLoader);
         }
 
         recipeNameTextview.setText(recipe.getName());
