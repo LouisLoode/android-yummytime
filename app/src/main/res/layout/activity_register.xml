@@ -42,7 +42,7 @@ xmlns:tools = "http://schemas.android.com/tools"
         android:layout_width = "260dp"
         android:layout_height = "32dp"
         android:inputType= "textNoSuggestions"
-        android:id = "@+id/input_username"
+        android:id = "@+id/input_name"
 
         android:hint = "Choose a username"
         android:background="@android:color/white"

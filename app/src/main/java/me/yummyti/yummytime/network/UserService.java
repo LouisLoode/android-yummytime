@@ -66,13 +66,13 @@ public class UserService {
         sendRequest(request);
     }
 
-    public interface UserLoginResultListener {
-        void onLoginUsers(User users);
+    public interface UserPostResultListener {
+        void onPostUsers(User users);
         void onFailed();
     }
 
 
-    public static void loginUser(String email, String password, UserLoginResultListener listener) {
+    public static void loginUser(String email, String password, UserPostResultListener listener) {
 
         String url = UrlBuilder.getLoginUrl();
 
@@ -81,35 +81,34 @@ public class UserService {
         params.put("password", password);
 
         //Create the request
-        JacksonRequest<User> request = createLoginUsersRequest(url, params, listener);
+        JacksonRequest<User> request = createPostUsersRequest(url, params, listener);
 
         // Before we send the request, first we cancel the previous request
 
         sendRequest(request);
     }
 
-    public interface UserRegisterResultListener {
-        void onRegisterUsers(User users);
-        void onFailed();
-    }
 
 
-    public static void registerUser(String name, String email, String password, String password_confirmation, UserRegisterResultListener listener) {
+    public static void registerUser(String name, String email, String password, String password_confirmation, UserPostResultListener listener) {
 
         String url = UrlBuilder.getRegisterUrl();
 
         Map<String, String> params = new HashMap<String, String>();
-        params.put("Content-Type", "application/json");
+        Log.e("DEBUG_NAME:", name);
+        Log.e("DEBUG_MAIL:", email);
+        Log.e("DEBUG_PASS1:", password);
+        Log.e("DEBUG_PASS2:", password_confirmation);
         params.put("name", name);
         params.put("mail", email);
         params.put("password", password);
         params.put("password_confirmation", password_confirmation);
 
+
         //Create the request
-        JacksonRequest<User> request = createRegisterUsersRequest(url, params, listener);
+        JacksonRequest<User> request = createPostUsersRequest(url, params, listener);
 
         // Before we send the request, first we cancel the previous request
-
         sendRequest(request);
     }
 
@@ -185,8 +184,8 @@ public class UserService {
     }
 
 
-    private static JacksonRequest<User> createLoginUsersRequest(String url, Map params,
-                                                                final UserLoginResultListener listener) {
+    private static JacksonRequest<User> createPostUsersRequest(String url, Map params,
+                                                                final UserPostResultListener listener) {
 
         JacksonRequest<User> request =
                 new JacksonRequest<User>(Request.Method.POST, url, params, new JacksonRequestListener<User>() {
@@ -196,27 +195,20 @@ public class UserService {
                         //response !!!
                         //Log.e("user_POST_service", String.valueOf(statusCode));
 
-
                         if(error != null){
-
-
                             if(error!=null) {
                                 if(listener!=null) {
                                     listener.onFailed();
                                 }
                             }
-
                         }else {
                             if(response!=null) {
 
                                 if(listener!=null) {
-                                    listener.onLoginUsers(response);
+                                    listener.onPostUsers(response);
                                 }
                             }
-
                         }
-
-
                     }
 
                     @Override
@@ -227,64 +219,27 @@ public class UserService {
                         return SimpleType.construct(User.class);
                         //return ArrayType.construct(SimpleType.constructUnsafe(User.class),null,null);
                     }
-                });
+                }) {
+                    @Override
+                    public String getBodyContentType() {
+                        return "application/json";
+                    }
+
+                    @Override
+                    public Map<String, String> getHeaders() throws AuthFailureError {
+                        Map<String, String> headers = new HashMap<String, String>();
+                        headers.put("Accept", "application/json");
+
+                        if (getMethod() == Method.POST || getMethod() == Method.PUT) {
+                            headers.put("Content-Type", "application/x-www-form-urlencoded; charset=utf8");
+                        }
+
+                        return headers;
+                    }
+                };
 
         return request;
     }
-
-    private static JacksonRequest<User> createRegisterUsersRequest(String url, Map params,
-                                                                   final UserRegisterResultListener listener) {
-
-        JacksonRequest<User> request =
-                new JacksonRequest<User>(Request.Method.POST, url, params, new JacksonRequestListener<User>() {
-                    @Override
-                    public void onResponse(User response, int statusCode, VolleyError error) {
-
-                        //response !!!
-                        Log.e("user_POST_service", String.valueOf(statusCode));
-                        Log.e("createRegisterUsers: ", String.valueOf(error));
-
-
-                        //if(error != null){
-
-
-                        if(response!=null) {
-
-                            if(listener!=null) {
-                                listener.onRegisterUsers(response);
-                            }
-                        }
-
-                        if(error!=null) {
-                            if(listener!=null) {
-                                listener.onFailed();
-                            }
-                        }
-
-                        //}else {
-
-
-                        //}
-
-
-                    }
-
-
-                    @Override
-                    public JavaType getReturnType() {
-                        // SimpleTyp=e
-                        // ArrayType
-
-                        return SimpleType.construct(User.class);
-                        //return ArrayType.construct(SimpleType.constructUnsafe(User.class),null,null);
-                    }
-                });
-
-
-        return request;
-    }
-
-
 
     private static void sendRequest(JacksonRequest request) {
         ApplicationController.getInstance()

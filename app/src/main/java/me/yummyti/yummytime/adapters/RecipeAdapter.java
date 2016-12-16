@@ -26,7 +26,7 @@ public class RecipeAdapter extends BaseAdapter {
     protected class RecipeViewHolder {
 
 
-        @BindView(R.id.recipe_image)
+        //@BindView(R.id.recipe_image)
         protected NetworkImageView networkImageView;
 
         @BindView(R.id.recipe_name)

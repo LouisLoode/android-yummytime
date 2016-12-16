@@ -106,7 +106,7 @@ android:paddingTop="70dp">
     <ListView
         android:id="@+id/recipesListView"
         android:background="#FFFFFF"
-        android:paddingTop="10dp"
+        android:paddingTop="5dp"
         android:layout_below="@+id/title_recipes"
         android:layout_marginTop="18dp"
         android:layout_height="50dp"

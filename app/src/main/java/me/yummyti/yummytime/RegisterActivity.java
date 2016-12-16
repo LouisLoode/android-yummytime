@@ -17,14 +17,11 @@ import me.yummyti.yummytime.network.UserService;
 
 public class RegisterActivity extends AppCompatActivity {
     public static final String TAG = "RegisterActivity";
-
     private static final int REQUEST_SIGNIN = 0;
 
-    private static final String REGISTER_URL = "http://91.134.136.124:3001/users.json";
 
-
-    @BindView(R.id.input_username)
-    protected EditText _usernameText;
+    @BindView(R.id.input_name)
+    protected EditText _nameText;
 
     @BindView(R.id.input_email)
     protected EditText _emailText;
@@ -82,15 +79,15 @@ public class RegisterActivity extends AppCompatActivity {
         progressDialog.setMessage("Registering...");
         progressDialog.show();
 
-        final String username = _usernameText.getText().toString();
+        final String name = _nameText.getText().toString();
         final String email = _emailText.getText().toString();
         final String password = _passwordText.getText().toString();
         final String password_verif = _passwordVerifText.getText().toString();
 
 
-        UserService.registerUser(username, email, password, password_verif, new UserService.UserRegisterResultListener() {
+        UserService.registerUser(name, email, password, password_verif, new UserService.UserPostResultListener() {
             @Override
-            public void onRegisterUsers(User user) {
+            public void onPostUsers(User user) {
 
                 Log.e("DEBUG onRegisterUsers", user.getName().toString());
                 Integer id = user.getId();
@@ -158,15 +155,15 @@ public class RegisterActivity extends AppCompatActivity {
         boolean valid = true;
 
         String email = _emailText.getText().toString();
-        String username = _usernameText.getText().toString();
+        String name = _nameText.getText().toString();
         String password = _passwordText.getText().toString();
         String password_verif = _passwordVerifText.getText().toString();
 
-        if (username.isEmpty()) {
-            _usernameText.setError("enter an username");
+        if (name.isEmpty()) {
+            _nameText.setError("enter an username");
             valid = false;
         } else {
-            _usernameText.setError(null);
+            _nameText.setError(null);
         }
 
         if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
