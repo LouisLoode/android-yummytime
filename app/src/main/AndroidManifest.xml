@@ -28,10 +28,22 @@
         <!-- Login -->
 
         <!-- Register -->
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".IngredientsAllActivity"></activity>
-        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".RegisterActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".HomeActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".IngredientsAllActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait"
+            />
     </application>
 
 </manifest>

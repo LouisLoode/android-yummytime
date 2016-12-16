@@ -13,21 +13,15 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class User implements Parcelable {
 
+    private int id;
+    private int cookbook_count;
+    private int recipes_count;
 
     private String name;
-    private int id;
-    private String image;
+    private String image_file_name;
     private String mail;
 
-
     public User() {
-    }
-
-    protected User(Parcel in) {
-        id = in.readInt();
-        name = in.readString();
-        image = in.readString();
-        mail = in.readString();
     }
 
     public static final Creator<User> CREATOR = new Creator<User>() {
@@ -42,28 +36,63 @@ public class User implements Parcelable {
         }
     };
 
+    protected User(Parcel in) {
+        id = in.readInt();
+        cookbook_count = in.readInt();
+        recipes_count = in.readInt();
+        name = in.readString();
+        image_file_name = in.readString();
+        mail = in.readString();
+    }
+
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(id);
+        parcel.writeInt(cookbook_count);
+        parcel.writeInt(recipes_count);
+        parcel.writeString(name);
+        parcel.writeString(image_file_name);
+        parcel.writeString(mail);
+
+    }
+
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getCookbook_count() {
+        return cookbook_count;
+    }
+
+    public void setCookbook_count(int cookbook_count) {
+        this.cookbook_count = cookbook_count;
+    }
+
+    public int getRecipes_count() {
+        return recipes_count;
+    }
+
+    public void setRecipes_count(int recipes_count) {
+        this.recipes_count = recipes_count;
+    }
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
     }
 
     public String getMail() {
@@ -74,15 +103,11 @@ public class User implements Parcelable {
         this.mail = mail;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
+    public String getImage_file_name() {
+        return image_file_name;
     }
 
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(name);
-        parcel.writeString(image);
-        parcel.writeString(mail);
+    public void setImage_file_name(String image_file_name) {
+        this.image_file_name = image_file_name;
     }
 }

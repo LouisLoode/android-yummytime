@@ -19,8 +19,6 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private static final int REQUEST_SIGNUP = 0;
 
-    private static final String LOGIN_URL = "http://91.134.136.124:3001/login.json";
-
 
     @BindView(R.id.input_email)
     protected EditText _emailText;
@@ -79,9 +77,9 @@ public class MainActivity extends AppCompatActivity {
         final String password = _passwordText.getText().toString();
 
 
-        UserService.loginUser(email, password, new UserService.UserLoginResultListener() {
+        UserService.loginUser(email, password, new UserService.UserPostResultListener() {
             @Override
-            public void onLoginUsers(User user) {
+            public void onPostUsers(User user) {
 
 
                 Integer id = user.getId();

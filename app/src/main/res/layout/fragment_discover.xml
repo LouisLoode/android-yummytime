@@ -77,7 +77,10 @@
 
       <!--<TextView
           android:id="@+id/title_recipes"
-          android:text="Recipe"
+          android:text="- TOP RECIPIES"
+          android:textSize="20dp"
+          android:textColor="#131D22"
+          android:paddingTop="16dp"
           android:layout_width="match_parent"
           android:layout_height="match_parent" />
 
